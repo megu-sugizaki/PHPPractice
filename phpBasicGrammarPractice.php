@@ -1,6 +1,7 @@
 <?php 
 
-$name = "Meg";
+// $name = "Meg";
+$name = 'dotinstall';
 
 // echo 'Hello Meg' . PHP_EOL;
 // echo 'Hi Meg' . PHP_EOL;
