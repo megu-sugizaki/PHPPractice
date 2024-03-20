@@ -1,10 +1,5 @@
 <?php 
 
-// $name = "Meg";
-$name = 'dotinstall';
+$name = "Meg";
 
-// echo 'Hello Meg' . PHP_EOL;
-// echo 'Hi Meg' . PHP_EOL;
-
-echo 'Hello' . $name . PHP_EOL;
-echo 'Hi' . $name . PHP_EOL;
+echo "It's Sunday. Hello" . $name . PHP_EOL;
