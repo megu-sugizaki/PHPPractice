@@ -1,3 +1,4 @@
 <?php 
-echo 'こんばんは' . PHP_EOL;
+echo 'Hello Meg' . PHP_EOL;
+echo 'Hi Meg' . PHP_EOL;
 ?>
