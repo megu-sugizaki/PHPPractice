@@ -1,10 +1,9 @@
 <?php 
-// comment
-# comment
-/* 
-comment 
-comment
-*/
-echo 'Hello Meg' . PHP_EOL;
+
+$name = "Meg";
+
+// echo 'Hello Meg' . PHP_EOL;
 // echo 'Hi Meg' . PHP_EOL;
-?>
+
+echo 'Hello' . $name . PHP_EOL;
+echo 'Hi' . $name . PHP_EOL;
