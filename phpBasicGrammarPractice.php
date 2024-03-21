@@ -1,17 +1,10 @@
 <?php
+$price = 500;
 
-echo 10 + 3 . PHP_EOL;
-echo 10 - 3 . PHP_EOL;
-echo 10 * 3 . PHP_EOL;
-echo 10 / 3 . PHP_EOL;
+$price += 100;
+$price *= 100;
 
-echo 10 % 3 . PHP_EOL;
+$price ++;
+$price --;
 
-//10の3乗
-echo 10 ** 3 . PHP_EOL;
-
-echo 2 + 10 * 3 . PHP_EOL;
-echo (2 + 10) * 3 . PHP_EOL;
-
-//文字列っぽいものは数値として計算される
-echo 2 + '3' . PHP_EOL;
+echo $price . PHP_EOL;
