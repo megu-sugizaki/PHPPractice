@@ -1,10 +1,11 @@
 <?php
-$price = 500;
+$name = 'Meg';
+//再代入
+$name = 'dotinstall';
 
-$price += 100;
-$price *= 100;
+// 定数, 変数名は基本大文字、ドルマークは使わない
+define('NAME', 'Meg');
 
-$price ++;
-$price --;
-
-echo $price . PHP_EOL;
+//エラーではないが、再代入すると警告が出る
+define('dotinstall', 'Meg');
+echo NAME . PHP_EOL;
