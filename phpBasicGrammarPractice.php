@@ -1,11 +1,10 @@
 <?php
 
-$score = 40;
+$score = 60;
+$name = 'Meg';
 
-if($score >= 80){
-  echo 'Great!' . PHP_EOL;
-} else if($score >= 60){
-  echo 'Good!' . PHP_EOL;
-} else {
-  echo 'OK' . PHP_EOL;
-} 
+if ($score >= 50){
+  if($name === 'Meg'){
+    echo 'Good job!' . PHP_EOL;
+  }
+}
