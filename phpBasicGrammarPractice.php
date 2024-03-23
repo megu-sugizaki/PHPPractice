@@ -1,14 +1,16 @@
 <?php
 
-$score = 60;
-$name = 'Meg';
+$signal = 'red';
 
-// if ($score >= 50){
-//   if($name === 'Meg'){
-//     echo 'Good job!' . PHP_EOL;
-//   }
-// }
-
-if ($score >= 50 && $name === 'Meg'){
-  echo 'Good job!' . PHP_EOL;
+switch ($signal){
+  case 'red':
+    echo 'stop' . PHP_EOL;
+    break;
+  case 'yellow';
+    echo 'caution!' . PHP_EOL;
+    break;
+  case 'blue';
+    echo 'go!' . PHP_EOL;
+    break;
 }
+//セミコロンいらず
