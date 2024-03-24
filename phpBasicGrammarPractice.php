@@ -13,4 +13,7 @@ switch($signal){
   case 'green':
     echo 'Go!' . PHP_EOL;
     break;
+  default:
+    echo 'Wrong signal!!' . PHP_EOL;
+    break;
 }
