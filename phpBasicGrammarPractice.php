@@ -1,16 +1,16 @@
 <?php
 
-$signal = 'red';
+$signal = 'blue';
 
-switch ($signal){
+switch($signal){
   case 'red':
-    echo 'stop' . PHP_EOL;
+    echo 'Stop' . PHP_EOL;
     break;
-  case 'yellow';
-    echo 'caution!' . PHP_EOL;
+  case 'yellow':
+    echo 'Caution"' . PHP_EOL;
     break;
-  case 'blue';
-    echo 'go!' . PHP_EOL;
+  case 'blue':
+  case 'green':
+    echo 'Go!' . PHP_EOL;
     break;
 }
-//セミコロンいらず
