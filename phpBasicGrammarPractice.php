@@ -1,9 +1,12 @@
 <?php
 
+$rate = 1.1;
+
 function sum($a, $b, $c)
 {
-  return $a + $b + $c . PHP_EOL;
-  echo 'Here!' . PHP_EOL;
+  //rateが関数の外で定義されている場合
+  global $rate;
+  return ($a+$b+$c) * $rate;
 }
 
 // sum(100, 200, 300);
