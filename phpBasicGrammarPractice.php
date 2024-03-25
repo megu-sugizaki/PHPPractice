@@ -1,20 +1,9 @@
 <?php
 
-function showAdd($message = 'Ad'){
-  echo'---------' . PHP_EOL;
-  echo '---' . $message . '---' . PHP_EOL;
-  echo '--------' . PHP_EOL;
+function sum($a, $b, $c)
+{
+  echo $a + $b + $c . PHP_EOL;
 }
 
-
-showAdd('Header Ad');
-echo 'Tom is great!' . PHP_EOL;
-echo 'Bob is great!' . PHP_EOL;
-
-// showAdd('Ad');
-showAdd();
-
-echo 'Steve is great!' . PHP_EOL;
-echo 'Bob is great!' . PHP_EOL;
-
-showAdd('Footer Ad');
+sum(100, 200, 300);
+sum(300, 400, 500);
