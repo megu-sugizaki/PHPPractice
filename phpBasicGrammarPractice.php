@@ -1,18 +1,13 @@
 <?php
 
-//関数の外すべてで有効なグローバルスコープ
-$rate = 1.1;
-
-function sum($a, $b, $c)
-{
-  //rateが関数の外で定義されている場合
-  // global $rate;
-  //関数内のみで有効なローカルスコープ
-  $rate = 1.08;
-  return ($a+$b+$c) * $rate;
+function sum($a, $b, $c){
+  return $a + $b + $c;
 }
 
-// sum(100, 200, 300);
-// sum(300, 400, 500);
+//関数を直接代入する場合 = 無名関数　関数を別の関数の引数にできる
+//functionの後にスペース、{は改行し無い、最後はセミコロン
+$sum = function ($a, $b, $c){
+  return $a + $b + $c;
+};
 
-echo sum(100, 200, 300) + sum(300, 400, 500) . PHP_EOL;
+echo $sum(100, 300, 500);
