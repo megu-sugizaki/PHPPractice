@@ -1,12 +1,16 @@
 <?php
 
-function sum($a, $b, $c){
-  $total = $a + $b + $c;
-  
-  // $total < 0 がtrueなら0, falseなら$total
-  return $total < 0 ? 0 : $total;
+//数字が文字列に入っていた場合はintとしてみてほしくない時強い型つけ
+declare (strict_types = 1);
+
+//引数の型の指定と返り値voidの設定
+function showInfo(string $name, int $score): void
+{
+  echo $name . ': ' . $score . PHP_EOL;
 }
 
-echo sum(100, 300, 500) . PHP_EOL;
-echo sum(-1000, 300, 500);
+showInfo('Meg', 40);
+// showInfo('Meg', 'dotinstall');
 
+//文字列でも可能な限り正しい型に変換
+showInfo('Meg', '4');
