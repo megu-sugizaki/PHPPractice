@@ -1,13 +1,12 @@
 <?php
 
 function sum($a, $b, $c){
-  return $a + $b + $c;
+  $total = $a + $b + $c;
+  
+  // $total < 0 がtrueなら0, falseなら$total
+  return $total < 0 ? 0 : $total;
 }
 
-//関数を直接代入する場合 = 無名関数　関数を別の関数の引数にできる
-//functionの後にスペース、{は改行し無い、最後はセミコロン
-$sum = function ($a, $b, $c){
-  return $a + $b + $c;
-};
+echo sum(100, 300, 500) . PHP_EOL;
+echo sum(-1000, 300, 500);
 
-echo $sum(100, 300, 500);
