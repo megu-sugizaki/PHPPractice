@@ -7,5 +7,6 @@
 //最後にカンマを入れると入れ替え、削除、編集がしやすい
 $scores = [90, 60, 100,];
 
-//index = 添字（そえじ）
-echo $scores[1] . PHP_EOL;
+//配列の中身を表示する
+var_dump($scores);
+print_r($scores);
