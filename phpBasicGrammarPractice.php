@@ -3,7 +3,8 @@
 //数字が文字列に入っていた場合はintとしてみてほしくない時強い型つけ
 declare (strict_types = 1);
 
-function getAward($score): string
+// 型の前に？マークでnullかその型か
+function getAward(?int $score): ?string
 {
   return $score >= 100 ? 'Gold Medal' : null;
 }
