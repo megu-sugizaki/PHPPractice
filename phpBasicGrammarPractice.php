@@ -1,19 +1,13 @@
 <?php
-//別型のデータや配列も入れられる
-$moreScores = [
-  55, 
-  72,
-  'perfect',
-  [90, 42, 88]
-];
+//引数が何個きても合計を出したい
 
-//前に...を入れると配列の中に配列が入る
-$scores = [
-90,
-40,
-...$moreScores,
-100
-];
+function sum(...$numbers){
+  $total = 0;
+  foreach($numbers as $number){
+    $total += $number;
+  }
+  return $total;
+}
 
-print_r($scores);
-echo $scores[5][2] . PHP_EOL;
+echo sum(1,3,5) . PHP_EOL;
+echo sum(4, 2, 5, 1) . PHP_EOL;
