@@ -16,3 +16,4 @@ $scores = [
 ];
 
 print_r($scores);
+echo $scores[5][2] . PHP_EOL;
