@@ -1,15 +1,18 @@
 <?php
-
-$scores = [
-  'first' => 90,
-  'second' => 40,
-  'third' => 100,
+//別型のデータや配列も入れられる
+$moreScores = [
+  55, 
+  72,
+  'perfect',
+  [90, 42, 88]
 ];
 
-// foreach ($scores as $score){
-//   echo $score . PHP_EOL;
-// }
+//前に...を入れると配列の中に配列が入る
+$scores = [
+90,
+40,
+...$moreScores,
+100
+];
 
-foreach ($scores as $key => $score){
-  echo $key. ' - ' . $score . PHP_EOL;
-}
+print_r($scores);
