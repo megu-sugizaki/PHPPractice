@@ -1,21 +1,9 @@
 <?php
-//引数が何個きても合計を出したい
+$hello = strlen('hello');
 
-function getStats(...$numbers){
-  $total = 0;
-  foreach($numbers as $number){
-    $total += $number;
-  }
-  return [$total, $total/count($numbers)];
+$number = number_format(5233500);
 
-}
+$shuffle = ([1, 3, 5, 8]);
 
-print_r(getStats(1, 3, 5));
+$array = array_unique([1, 1, 4, 4, 2]);
 
-//合計、平均それぞれの値を変数に代入することもできる
-list($sum, $average) = getStats(1, 3, 5);
-//上と同じ意味
-[$sum, $average] = getStats(1, 3, 5);
-
-echo $sum . PHP_EOL;
-echo $average . PHP_EOL;
