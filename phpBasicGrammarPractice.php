@@ -1,4 +1,5 @@
 <?php
+//PHP.net で関数を検索
 $hello = strlen('hello');
 
 $number = number_format(5233500);
