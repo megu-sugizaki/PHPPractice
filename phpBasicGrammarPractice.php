@@ -1,14 +1,13 @@
 <?php
 
-$input = ' dot_Meg ';
+$input = "こんにちは" ; 
 $input = trim($input);
 
-// echo strlen($input) . PHP_EOL;
+//日本語を使う時は注意。mb_を使う
+echo mb_strlen($input) . PHP_EOL;
+echo mb_strpos($input, 'に') . PHP_EOL;
 
-// //文字列の検索
-// //検索したい文字列を渡すと何文字目にあるか表示
-// echo strpos($input, '_') . PHP_EOL;
+$input = str_replace('にち', 'ばん', $input);
 
-//文字列の置換 _を-に
-$input = str_replace('_', '-', $input);
-echo $input . PHP_EOL;
+echo $input. PHP_EOL;
+
