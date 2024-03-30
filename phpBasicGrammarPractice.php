@@ -7,7 +7,9 @@
 //文字を置換したい
 //substr_replace(文字列文字列, 置換文字列, 位置, 桁数)
 
-$input = '20200320Item-A 1200';
+$input = '20200320Item-A  1200';
+//8文字目から8桁分のデータを置換
+$input = substr_replace($input, 'Item-B  ', 8, 8);
 
 //0文字目から8桁分
 $date = substr($input, 0, 8);
