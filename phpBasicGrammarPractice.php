@@ -1,30 +1,17 @@
 <?php
+$input = 'Call us at 03-3001-1256 or 03-3015-3222';
 
-//文字種の異なる文でそれぞれの値を取り出したい
-//20200401Item-A 1200
-//substr(文字列, 位置, 桁数)
+//電話番号を抜き出すためのパターンを指定
+//スラッシュで囲む、その中に正規表現
+//数値が2桁分、4桁分、4桁分
+$pattern = '/\d{2}-\d{4}-\d{4}/';
 
-//文字を置換したい
-//substr_replace(文字列文字列, 置換文字列, 位置, 桁数)
+//検索したいパターン、文字列、検索結果を渡す変数
+//最初に見つかった結果だけを格納
+preg_match($pattern, $input, $matches);
+//全てのマッチした結果を格納
+preg_match_all($pattern, $input, $matches);
 
-$input = '20200320Item-A  1200';
-//8文字目から8桁分のデータを置換
-$input = substr_replace($input, 'Item-B  ', 8, 8);
-
-//0文字目から8桁分
-$date = substr($input, 0, 8);
-
-//8文字目から8桁分
-$product = substr($input, 8, 8);
-
-//16文字目から4桁分 最後までの場合最後の引数は不要
-$amount = substr($input, 16);
-
-echo $date . PHP_EOL;
-echo $product . PHP_EOL;
-//echo $amount . PHP_EOL;
-//3桁以上はnumber_formatで見やすくなる
-echo number_format($amount) . PHP_EOL;
-
+print_r($matches);
 
 
