@@ -14,4 +14,9 @@ preg_match_all($pattern, $input, $matches);
 
 print_r($matches);
 
+//パターンと置換後の文字列、検索したい文字列を渡すと置換して売れる
+//置換したい文字列を変数に代入、その変数と、置換後の文字列、元の文字列の変数を記載
+$input = preg_replace($pattern, '**-****-****', $input);
+echo $input . PHP_EOL;
+
 
