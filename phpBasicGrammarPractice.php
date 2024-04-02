@@ -1,15 +1,14 @@
 <?php
-$d = [2020, 11, 15];
+$n = 5.6283;
 
-// $dを文字列に埋め込む
-echo "$d[0]-$d[1]-$d[2]" . PHP_EOL;
+//小数点以下切り上げ
+echo ceil($n) . PHP_EOL;
 
-// 単純に区切り文字で配列を表示
-// - で区切ってくれる
-echo implode('-', $d) . PHP_EOL;
+//小数点以下切り捨て
+echo floor($n) . PHP_EOL;
 
-$t = '17:32:45';
+//四捨五入して整数に
+echo round($n) . PHP_EOL;
 
-// 時、分、秒の文字列を配列要素にしたい
-//print_rの中にexplodeと区切りたい記号や文字、変数を記入
-print_r(explode(':', $t));
+//小数点以下2桁になるように四捨五入
+echo round($n, 2) . PHP_EOL;
