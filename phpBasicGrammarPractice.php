@@ -1,17 +1,16 @@
 <?php
-$scores = [30, 40, 50, 60, 70];
+$scores = [30, 40, 50, 60, 70, 80];
 
-//配列の切り出し 配列の変数、何番目から　何個
-//元配列は変更せず新しい配列を返す
-$partial = array_slice($scores, 2, 3);
+//途中の要素を削除してつめたい 配列、位置、個数
+//元配列を直接変更
+// array_splice($scores, 2, 3);
 
-//最後までの場合は最後の引数がいらない
-$partial = array_slice($scores, 2);
+// print_r($scores);
 
-//マイナスをつけると末尾から何番目
-$partial = array_slice($scores, -2);
+//削除した位置に要素を挿入できる, 何番目から何個分削除してこの要素を入れる
+// array_splice($scores,2, 3, 100);
+// print_r($scores);
 
-
+//削除せずに間に要素を挿入 加えて複数要素を挿入
+array_splice($scores, 2, 0, [100, 101]);
 print_r($scores);
-print_r($partial);
-
