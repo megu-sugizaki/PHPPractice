@@ -20,3 +20,9 @@ echo mt_rand(1,6) . PHP_EOL;
 //最大値、最小値
 echo max(3, 9, 4) . PHP_EOL;
 echo min(3, 9, 4) . PHP_EOL;
+
+//パイの定数 円周率
+echo M_PI. PHP_EOL;
+
+//平方根　2の平方根
+echo M_SQRT2 . PHP_EOL;
