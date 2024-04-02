@@ -1,28 +1,16 @@
 <?php
-// $n = 5.6283;
-
-// //小数点以下切り上げ
-// echo ceil($n) . PHP_EOL;
-
-// //小数点以下切り捨て
-// echo floor($n) . PHP_EOL;
-
-// //四捨五入して整数に
-// echo round($n) . PHP_EOL;
-
-// //小数点以下2桁になるように四捨五入
-// echo round($n, 2) . PHP_EOL;
+$scores = [30, 40, 50];
 
 
-//乱数を作る（1以上6以下）
-echo mt_rand(1,6) . PHP_EOL;
 
-//最大値、最小値
-echo max(3, 9, 4) . PHP_EOL;
-echo min(3, 9, 4) . PHP_EOL;
+//先頭に要素を追加 いくつでも追加可能
+array_unshift($scores, 10, 20);
 
-//パイの定数 円周率
-echo M_PI. PHP_EOL;
+//末尾に要素を追加
+array_push($scores, 60, 70);
 
-//平方根　2の平方根
-echo M_SQRT2 . PHP_EOL;
+//末尾に一文字だけの場合
+$scores[] = 80;
+
+print_r($scores);
+
