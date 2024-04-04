@@ -13,4 +13,4 @@ $scores = [30, 40, 50, 60, 70, 80];
 
 //削除せずに間に要素を挿入 加えて複数要素を挿入
 array_splice($scores, 2, 0, [100, 101]);
-print_r($scores);
+print_r($scores)!;
