@@ -1,22 +1,28 @@
 <?php
-$numbers = range(1, 10);
+$scores = [
+'Meg' => 80,
+'Chihiro' => 70,
+'Taka' => 60,
+];
 
-//それぞれの要素にtrue/falseを返す関数を適用し、trueのだったものについてのみ
-//要素を取り出して新しい配列を返す
-//array_mapと逆で左に配列、右に関数
+//キーだけ配列で取り出したい
+$keys = array_keys($scores);
 
-//偶数のみ抽出
-$evenNumbers = array_filter(
-  $numbers, 
-  // function($n){
-    // if($n % 2 === 0){
-    //   return true;
-    // } else {
-    //   return false;
-    // }
-    //上の代わりに
-    fn($n) => $n % 2 === 0
-  // }
-  );
-  
-  print_r($evenNumbers);
+//値だけ取り出したい
+$values = array_values($scores);
+
+print_r($keys);
+print_r($values);
+
+//特定のキーがあるか調べたい
+if(array_key_exists('Meg', $scores) === true){
+  echo 'Meg is here' . PHP_EOL;
+}
+
+//特定の値があるか調べたい
+if(in_array(80, $scores) === true){
+  echo '80 is here!' . PHP_EOL;
+}
+
+//値を配列から検索して対応するキーをかえす
+echo array_search(70, $scores). PHP_EOL;
