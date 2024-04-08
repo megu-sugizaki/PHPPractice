@@ -1,14 +1,22 @@
 <?php
-$prices =[100, 200, 300];
+$numbers = range(1, 10);
 
-//左の関数を右の配列の要素全てに適用
-//$prices全ての要素に10%の税をかける
-$newPrices = array_map(
-  //無名関数 配列の引数は$nに代入
-  // function($n){return $n * 1.1; },
-  //上と同じ、アロー関数を使用
-  fn($n) => $n * 1.1,
-  $prices
-);
+//それぞれの要素にtrue/falseを返す関数を適用し、trueのだったものについてのみ
+//要素を取り出して新しい配列を返す
+//array_mapと逆で左に配列、右に関数
 
-print_r($newPrices);
+//偶数のみ抽出
+$evenNumbers = array_filter(
+  $numbers, 
+  // function($n){
+    // if($n % 2 === 0){
+    //   return true;
+    // } else {
+    //   return false;
+    // }
+    //上の代わりに
+    fn($n) => $n % 2 === 0
+  // }
+  );
+  
+  print_r($evenNumbers);
