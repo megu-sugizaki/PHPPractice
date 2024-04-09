@@ -1,49 +1,22 @@
 <?php
-$data = [
-  ['name' => 'Meg', 'score' => 80],
-  ['name' => 'Chihiro', 'score' => 60],
-  ['name' => 'Taka', 'score' => 70],
-  ['name' => 'Henry', 'score' =>60],
-];
+//今あるファイルを確認する
+//terminalでlsコマンドで確認
+//新しくファイルを作って書き込みたい
+//ファイルを操作するにはfopenという関数を使う
 
-//$scoreの小さい順
-//何を基準に並べ替えるか自分で定義できる
-//元配列を直接書き換える
-usort(
-  //まず配列を渡す
-  $data,
-  //2つの値が同じで順番を変えたくない時は0を返す
-  function($a, $b){
-    if($a['score'] === $b['score']){
-      return 0;
-    }
-    //$a > $ $bなら1を、そうじゃないなら-1を返す
-    return $a['score'] > $b['score'] ? 1 : -1;
-  }
-);
+//ファイル名を渡して、操作を記述。この場合はw = write
+//namesテキストがなければ新しく作る
+$fp = fopen('names.txt', 'w');
 
-//scoreの順に並び替えられている→usortでは1つの項目しか並び替えられない
-//scoreが同じ時、nameはアルファベット順にならない
-print_r($data);
+//fpを介して操作を行う。$fpと書き込みたい値を書き込む
+//改行は\n
+fwrite($fp, "taro\n");
 
-//名前でも並び替えたい
-//array_multisortを使うとまず$aを基準に並び替えられて、$bもつられて変わる
-//$aの値が同じものに関してのみ$bが並び変わる
+//書き込みを終了
+fclose($fp);
 
-//$dataから'score'のキーの値だけを抜き取る
-$scores = array_column($data, 'score');
-//$dataから'name'のキーの値だけを抜き取る
-$names = array_column($data, 'name');
+//lsで確認すると新たにファイルができている
+// cat names.txt でファイルの中身が確認できる
 
-print_r($scores);
-print_r($names);
-
-//デフォルトだと小さい順、アルファベット順
-//自分で並び方を指定できる
-array_multisort(
-  $scores, SORT_DESC, SORT_NUMERIC,
-  $names, SORT_DESC, SORT_STRING,
-  $data
-);
-
-print_r($data);
+//再度同じコードを実行すると追記ではなく常にこのコードで実行される
+//taroは1行のみ
