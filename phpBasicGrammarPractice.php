@@ -25,3 +25,8 @@ usort(
 //scoreの順に並び替えられている→usortでは1つの項目しか並び替えられない
 //scoreが同じ時、nameはアルファベット順にならない
 print_r($data);
+
+//名前でも並び替えたい
+//array_multisortを使うとまず$aを基準に並び替えられて、$bもつられて変わる
+//$aの値が同じものに関してのみ$bが並び変わる
+array_multisort($a, $b)
