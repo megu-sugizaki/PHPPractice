@@ -29,4 +29,21 @@ print_r($data);
 //名前でも並び替えたい
 //array_multisortを使うとまず$aを基準に並び替えられて、$bもつられて変わる
 //$aの値が同じものに関してのみ$bが並び変わる
-array_multisort($a, $b)
+
+//$dataから'score'のキーの値だけを抜き取る
+$scores = array_column($data, 'score');
+//$dataから'name'のキーの値だけを抜き取る
+$names = array_column($data, 'name');
+
+print_r($scores);
+print_r($names);
+
+//デフォルトだと小さい順、アルファベット順
+//自分で並び方を指定できる
+array_multisort(
+  $scores, SORT_DESC, SORT_NUMERIC,
+  $names, SORT_DESC, SORT_STRING,
+  $data
+);
+
+print_r($data);
