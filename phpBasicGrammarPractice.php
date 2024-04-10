@@ -1,16 +1,24 @@
 <?php
-$fp = fopen('names.txt', 'w');
-$fp = fwrite($fp, "taro\n");
 
+// //内容の読み込み
+// $fp = fopen('names.txt', 'r');
 
-//a = append 追記処理
-$fp = fopen('names.txt', 'a');
+// //サイズを指定して一気に読み込む
+// $contents = fread($fp, filesize('names.txt'));
+// fclose($fp);
 
-//2回実行するとその分増える
-fwrite($fp, "jiro\n");
-fwrite($fp, "saburo\n");
+// echo $contents;
 
-//この後にファイル操作がなければ描かなくてOK
-//わかりやすいので記載
+//内容の読み込み
+$fp = fopen('names.txt', 'r');
+
+//サイズが大きい場合、先頭から1行ずつ読み込む
+//読み込むものがあるうちはtrueなので、whileを使用
+//読み込むものがあるうりは、の式
+while (($line = fgets($fp)) !== false){
+  echo $line;
+}
+
 fclose($fp);
+
 
