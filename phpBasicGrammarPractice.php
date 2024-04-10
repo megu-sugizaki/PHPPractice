@@ -1,24 +1,24 @@
 <?php
+//前回のnames.txtはterminalで削除しておく
+//rm names.txt
 
-// //内容の読み込み
-// $fp = fopen('names.txt', 'r');
+// //fopenを使わずにファイル操作をする
 
-// //サイズを指定して一気に読み込む
-// $contents = fread($fp, filesize('names.txt'));
-// fclose($fp);
+// $contents = "taro\njiro\nsaburo\n";
+
+// //ファイル名と内容を渡す
+// file_put_contents('names.txt', $contents);
+
+// //fopenを使わず読み込む
+// $contents = file_get_contents('names.txt');
 
 // echo $contents;
 
-//内容の読み込み
-$fp = fopen('names.txt', 'r');
+//コードを実行するだけ catコマンドなし
 
-//サイズが大きい場合、先頭から1行ずつ読み込む
-//読み込むものがあるうちはtrueなので、whileを使用
-//読み込むものがあるうりは、の式
-while (($line = fgets($fp)) !== false){
-  echo $line;
-}
+//1行ずつ配列の要素として読み込むことも可能
+//末尾の改行を無視するにはFILE_IGNORE_NEW_LINES
+$lines = file('names.txt', FILE_IGNORE_NEW_LINES);
 
-fclose($fp);
-
-
+//$linesの中身を確認
+var_dump($lines);
