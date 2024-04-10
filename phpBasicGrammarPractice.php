@@ -1,24 +1,25 @@
 <?php
-//前回のnames.txtはterminalで削除しておく
-//rm names.txt
+//dataディレクトリをターミナルで作成
+//mkdir data
 
-// //fopenを使わずにファイル操作をする
+//dataディレクトリにファイルを追加
+file_put_contents('data/taro.txt', "taro\n");
+file_put_contents('data/taro.txt', "jiro\n");
 
-// $contents = "taro\njiro\nsaburo\n";
+//実行するとファイルは見れないがデータはできる
+//ls -la data でデータファイルの中身があることを確認
 
-// //ファイル名と内容を渡す
-// file_put_contents('names.txt', $contents);
+//dataのファイル一覧を表示したい
+//ファイルを開く
+$dp = opendir('data');
+//内容を一行ずつ読み込み、読み込むものがなくなったらfalse
+//falseでない場合は{}の処理
+while(($item = readdir($dp)) !== false){
+  //$itemが.や..の場合はloopをスキップ
+  //結果に.や..が表示されることを防ぐ
+  if ($item === "." || $item === ".."){
+    continue;
+  }
 
-// //fopenを使わず読み込む
-// $contents = file_get_contents('names.txt');
-
-// echo $contents;
-
-//コードを実行するだけ catコマンドなし
-
-//1行ずつ配列の要素として読み込むことも可能
-//末尾の改行を無視するにはFILE_IGNORE_NEW_LINES
-$lines = file('names.txt', FILE_IGNORE_NEW_LINES);
-
-//$linesの中身を確認
-var_dump($lines);
+  echo $item . PHP_EOL;
+}
