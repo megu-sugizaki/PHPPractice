@@ -1,21 +1,18 @@
 <?php
-// クラス
+// クラスにまとめると後から修正が楽　コードの見通しもよくなる
 class Post
 {
   // プロパティ
   public $text;
-  public $likes;
+  //宣言する時にlikesを0に初期化していく
+  public $likes = 0;
 
-  //newした時に実行される
-  // public function __construct($textFromNew, $likesFromNew){
-  //   $this->text = $textFromNew;
-  //   $this->likes = $likesFromNew;
-  // }
 
   //引数とプロパティを同じ値にすることも可能
-    public function __construct($text, $likes){
+  //likesは0からスタートしたいので初期値を0
+  //引数からも$likesを削除
+    public function __construct($text){
     $this->text = $text;
-    $this->likes = $likes;
   }
   
   // メソッド
@@ -26,23 +23,9 @@ class Post
 }
 
 $posts = [];
-// $posts[0] = ['text' => 'hello', 'likes' => 0];
-$posts[0] = new Post('hello', 0); //インスタンス
-// $posts[0] ->text = 'hello';
-// $posts[0]->likes = 0;
-// $posts[1] = ['text' => 'hello again', 'likes' => 0];
-$posts[1] = new Post('hello again', 0); //インスタンス
-// $posts[1] ->text = 'hello again';
-// $posts[1]->likes = 0;
+$posts[0] = new Post('hello'); //インスタンス
 
-//クラス内で定義しているので不要
-// function show($post)
-// {
-//   printf('%s (%d)' . PHP_EOL, $post['text'], $post['likes']);
-// }
-
-// show($posts[0]);
-// show($posts[1]);
+$posts[1] = new Post('hello again'); //インスタンス
 
 $posts[0]->show();
 $posts[1]->show();
