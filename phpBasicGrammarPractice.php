@@ -7,6 +7,7 @@ class Post
   private $likes = 0;
 
   //class自体に紐づいたプロパティやメソッドを作る → static を使う
+  //クラスプロパティ
   private static $count = 0;
 
     public function __construct(string $text){
@@ -24,6 +25,7 @@ class Post
   }
 
   //static関連の呼び出しにはstaticをつける
+  //クラスメソッド
   public static function showInfo(){
     printf('Count: %d' . PHP_EOL, self::$count);
   }
