@@ -10,13 +10,13 @@ class Post
     $this->text = $text;
   }
 
-  //メソッドを継承クラスでオーバーライドしてほしくない時finalを使う
-  final public function show()
+  public function show()
   {
     printf('%s' . PHP_EOL, $this->text);
   }
 }
 
+//データ型も継承
 class SponsoredPost extends Post
 {
   //広告主の情報を保持
@@ -29,10 +29,6 @@ class SponsoredPost extends Post
     //$sponsorもsponsor propertyにセット
     $this -> sponsor = $sponsor;
   }
-  
-  public function showSponsor(){
-    printf('%s' . PHP_EOL, $this->sponsor);
-  }
 
   //親クラスと同名のメソッドを再定義することも可能→オーバーライド
   public function show(){
@@ -41,13 +37,23 @@ class SponsoredPost extends Post
   }
 }
 
+//データ型の継承を見るためPost型のメソッドを作成
+//子クラスや親クラスで変更があってもメソッドは変更不要となる
+function processPost(Post $post){
+  $post -> show();
+}
+
 $posts = [];
 $posts[0] = new Post('hello');
 $posts[1] = new Post('hello again');
 //$textと$sponsorを渡す
 $posts[2] = new SponsoredPost('hello hello', 'dotinstall');
 
-$posts[0]->show();
-$posts[1]->show();
-$posts[2]->show();
-$posts[2]->showSponsor();
+// $posts[0]->show();
+// $posts[1]->show();
+// $posts[2]->show();
+
+//SponsoredPostもPost型を使えるのでメソッドがうまく行く
+foreach ($posts as $post){
+  processPost($post);
+}
