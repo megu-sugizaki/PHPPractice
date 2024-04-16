@@ -1,54 +1,45 @@
 <?php
-//親クラス（Super class）
+
 class Post
 {
-  private string $text;
-  private $likes = 0;
+  private $text;
 
-  private static $count = 0;
-
-  public const VERSION = 0.1;
-
-    public function __construct(string $text){
+  public function __construct($text)
+  {
     $this->text = $text;
-    self::$count++;
   }
-  
-  // メソッド
+
   public function show()
   {
-    printf('%s (%d)' . PHP_EOL, $this->text, $this->likes);
+    printf('%s' . PHP_EOL, $this->text);
   }
-
-  //static関連の呼び出しにはstaticをつける
-  //クラスメソッド
-  public static function showInfo(){
-    printf('Count: %d' . PHP_EOL, self::$count);
-
-    //浮動小数で小数点以下1桁まで表示の設定
-    printf('VERSION: %.1f' . PHP_EOL, self::VERSION);
-  }
-
 }
 
-//Post Classを引き継ぐ 子クラス(Sub class)
-class SponsoredPost extends Post{
-
+class SponsoredPost extends Post
+{
+  //広告主の情報を保持
+  private $sponsor;
+  
+  //newする時にtextと一緒に$sponsorを渡す
+  public function __construct($text, $sponsor){
+    //$textをtext propertyにセットしたいが親クラスですでに定義済み
+    parent::__construct($text);
+    //$sponsorもsponsor propertyにセット
+    $this -> sponsor = $sponsor;
+  }
+  
+  public function showSponsor(){
+    printf('%s' . PHP_EOL, $this->sponsor);
+  }
 }
 
 $posts = [];
-$posts[0] = new Post( 'hello'); //インスタンス
-$posts[1] = new Post('hello again'); //インスタンス
-//Post classを引き継いだSponsoredPostクラスのインスタンスを作成 = 継承
-$posts[2] = new Post('hello hello');
+$posts[0] = new Post('hello');
+$posts[1] = new Post('hello again');
+//$textと$sponsorを渡す
+$posts[2] = new SponsoredPost('hello hello', 'dotinstall');
 
 $posts[0]->show();
 $posts[1]->show();
 $posts[2]->show();
-
-//static関連のメソッドの呼び出し
-//2つインスタンスを作ったので2とひょうじされる
-Post::showInfo();
-
-//publicにしたのでクラスから直接呼び出すことができる
-echo Post::VERSION .PHP_EOL;
+$posts[2]->showSponsor();
