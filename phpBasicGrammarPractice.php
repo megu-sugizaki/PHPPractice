@@ -2,14 +2,16 @@
 
 class Post
 {
-  private $text;
+  //子クラスで使いたい場合protected
+  protected $text;
 
   public function __construct($text)
   {
     $this->text = $text;
   }
 
-  public function show()
+  //メソッドを継承クラスでオーバーライドしてほしくない時finalを使う
+  final public function show()
   {
     printf('%s' . PHP_EOL, $this->text);
   }
@@ -30,6 +32,12 @@ class SponsoredPost extends Post
   
   public function showSponsor(){
     printf('%s' . PHP_EOL, $this->sponsor);
+  }
+
+  //親クラスと同名のメソッドを再定義することも可能→オーバーライド
+  public function show(){
+    //$textはprivate定義なのでclassを跨いで使えない
+    printf('%s by $s' . PHP_EOL, $this->text, $this->sponsor);
   }
 }
 
