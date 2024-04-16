@@ -1,6 +1,13 @@
 <?php
 
-class Post
+//中小クラス→継承を前提。子クラスでオーバーライドが必要
+abstract class BasePost{
+  //中小メソッド
+  abstract public function show();
+}
+
+//中小クラスを継承したのでshowメソッドのオーバーライドが必須
+class Post extends BasePost
 {
   //子クラスで使いたい場合protected
   protected $text;
@@ -17,7 +24,8 @@ class Post
 }
 
 //データ型も継承
-class SponsoredPost extends Post
+//中小クラスを継承したのでshowメソッドのオーバーライドが必須
+class SponsoredPost extends BasePost
 {
   //広告主の情報を保持
   private $sponsor;
@@ -33,11 +41,12 @@ class SponsoredPost extends Post
   //親クラスと同名のメソッドを再定義することも可能→オーバーライド
   public function show(){
     //$textはprivate定義なのでclassを跨いで使えない
-    printf('%s by $s' . PHP_EOL, $this->text, $this->sponsor);
+    printf('%s by %s' . PHP_EOL, $this->text, $this->sponsor);
   }
 }
 
 //データ型の継承を見るためPost型のメソッドを作成
+//sponsoredPostについては子クラスのshowメソッドが実行される
 //子クラスや親クラスで変更があってもメソッドは変更不要となる
 function processPost(Post $post){
   $post -> show();
