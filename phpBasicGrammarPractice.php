@@ -1,26 +1,16 @@
 <?php
+//親クラス（Super class）
 class Post
 {
-  // プロパティ 型を指定できるが弱い型つけ。
-  // 数値を入れても文字列にしてくれてしまう
   private string $text;
   private $likes = 0;
 
-  //class自体に紐づいたプロパティやメソッドを作る → static を使う
-  //クラスプロパティ
   private static $count = 0;
 
-  //classに紐づいた定数を定義
-  //大文字にして$マークはつけない
-  //定数はうっかり別の値になることはないのでpublicでもOK
-  //クラスに紐づいた定数 = オブジェクト定数
   public const VERSION = 0.1;
 
     public function __construct(string $text){
     $this->text = $text;
-
-    //いくつインスタンスが作られたか数える
-    //static関連の呼び出しにはselfを使用し$マークをつける
     self::$count++;
   }
   
@@ -41,12 +31,20 @@ class Post
 
 }
 
+//Post Classを引き継ぐ 子クラス(Sub class)
+class SponsoredPost extends Post{
+
+}
+
 $posts = [];
 $posts[0] = new Post( 'hello'); //インスタンス
 $posts[1] = new Post('hello again'); //インスタンス
+//Post classを引き継いだSponsoredPostクラスのインスタンスを作成 = 継承
+$posts[2] = new Post('hello hello');
 
 $posts[0]->show();
 $posts[1]->show();
+$posts[2]->show();
 
 //static関連のメソッドの呼び出し
 //2つインスタンスを作ったので2とひょうじされる
