@@ -11,6 +11,7 @@ abstract class BasePost{
     $this->text = $text;
   }
   //中小メソッド
+  //オーバーライドが必須　定義漏れを防ぐため
   abstract public function show();
 }
 
@@ -46,6 +47,24 @@ class SponsoredPost extends BasePost
   }
 }
 
+class PremiumPost extends BasePost
+{
+  //広告主の情報を保持
+  private $price;
+  
+  //newする時にtextと一緒に$sponsorを渡す
+  public function __construct($text, $price){
+    //$textをtext propertyにセットしたいが親クラスですでに定義済み
+    parent::__construct($text);
+    //$sponsorもsponsor propertyにセット
+    $this -> price = $price;
+  }
+
+  public function show(){
+    printf('%s by %s' . PHP_EOL, $this->text, $this->price);
+  }
+}
+
 //2つともBasePostクラスを継承しているため、データ型を変更
 function processPost(BasePost $post){
   $post -> show();
@@ -56,10 +75,7 @@ $posts[0] = new Post('hello');
 $posts[1] = new Post('hello again');
 //$textと$sponsorを渡す
 $posts[2] = new SponsoredPost('hello hello', 'dotinstall');
-
-// $posts[0]->show();
-// $posts[1]->show();
-// $posts[2]->show();
+$posts[3] = new PremiumPost('Hello there', 300);
 
 //SponsoredPostもPost型を使えるのでメソッドがうまく行く
 foreach ($posts as $post){
