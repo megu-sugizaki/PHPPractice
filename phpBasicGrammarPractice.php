@@ -1,13 +1,8 @@
 <?php
-//PostクラスとPremiumPostクラスのみlikeメソッドを持たせたい
-//親クラスは2つ継承できないのでもう1つ用意するのはNG
-//抽象メソッドを親クラスに定義するとSponsoredPostまで継承しないといけないのでNG
-//→インターフェースを使うと、好きなクラスにメソッド定義を強制させられる
-//クラスはいくつでも実装可能で、継承関係にないクラスにも実装可能
 
-interface LikeInterface{
+interface LikeInterface
+{
   public function like();
-
 }
 
 abstract class BasePost
@@ -22,18 +17,18 @@ abstract class BasePost
   abstract public function show();
 }
 
-
 class Post extends BasePost implements LikeInterface
 {
   private $likes = 0;
-
-  public function like(){
-    $this -> likes ++;
+  
+  public function like()
+  {
+    $this->likes++;
   }
 
   public function show()
   {
-    printf('%s (%d)' . PHP_EOL, $this->text, $this -> likes);
+    printf('%s (%d)' . PHP_EOL, $this->text, $this->likes);
   }
 }
 
@@ -55,14 +50,14 @@ class SponsoredPost extends BasePost
 
 class PremiumPost extends BasePost implements LikeInterface
 {
-  private $likes = 0;
-
-  public function like(){
-    $this -> likes ++;
-  }
-
   private $price;
-
+  private $likes = 0;
+  
+  public function like()
+  {
+    $this->likes++;
+  }
+  
   public function __construct($text, $price)
   {
     parent::__construct($text);
@@ -71,7 +66,7 @@ class PremiumPost extends BasePost implements LikeInterface
 
   public function show()
   {
-    printf('%s (%d) [%d JPY]' . PHP_EOL, $this->text, $this -> likes, $this->price);
+    printf('%s (%d) [%d JPY]' . PHP_EOL, $this->text, $this->likes, $this->price);
   }
 }
 
@@ -81,12 +76,9 @@ $posts[1] = new Post('hello again');
 $posts[2] = new SponsoredPost('hello hello', 'dotinstall');
 $posts[3] = new PremiumPost('hello there', 300);
 
-$posts[0] -> like();
-$posts[3] -> like();
-
-//型もインターフェースの型が使用可能
-function processLikeable(LikeInterface $likeable){
-  $likeable->like();
+function processLikeable(LikeInterface $likable)
+{
+  $likable->like();
 }
 
 processLikeable($posts[0]);
