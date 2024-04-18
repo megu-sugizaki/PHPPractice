@@ -84,6 +84,14 @@ $posts[3] = new PremiumPost('hello there', 300);
 $posts[0] -> like();
 $posts[3] -> like();
 
+//型もインターフェースの型が使用可能
+function processLikeable(LikeInterface $likeable){
+  $likeable->like();
+}
+
+processLikeable($posts[0]);
+processLikeable($posts[3]);
+
 function processPost(BasePost $post) 
 {
   $post->show();
