@@ -1,7 +1,15 @@
 <?php
 
-//中小クラス→継承を前提。子クラスでオーバーライドが必要
+//抽象クラス→継承を前提。子クラスでオーバーライドが必要
+//ある程度開発規模が大きくなってから
 abstract class BasePost{
+   //Post classから移動
+    protected $text;
+
+    public function __construct($text)
+  {
+    $this->text = $text;
+  }
   //中小メソッド
   abstract public function show();
 }
@@ -9,13 +17,6 @@ abstract class BasePost{
 //中小クラスを継承したのでshowメソッドのオーバーライドが必須
 class Post extends BasePost
 {
-  //子クラスで使いたい場合protected
-  protected $text;
-
-  public function __construct($text)
-  {
-    $this->text = $text;
-  }
 
   public function show()
   {
@@ -45,10 +46,8 @@ class SponsoredPost extends BasePost
   }
 }
 
-//データ型の継承を見るためPost型のメソッドを作成
-//sponsoredPostについては子クラスのshowメソッドが実行される
-//子クラスや親クラスで変更があってもメソッドは変更不要となる
-function processPost(Post $post){
+//2つともBasePostクラスを継承しているため、データ型を変更
+function processPost(BasePost $post){
   $post -> show();
 }
 
