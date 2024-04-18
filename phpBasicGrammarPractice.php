@@ -1,5 +1,8 @@
 <?php
+//PremiumPostとPostでlikeメソッドが重複している。
+//BasePostはSponsoredPostにも継承されているのでそこには書けない
 
+//Interfaceは実装を含めてはいけないのでここに書くわけにはいかない
 interface LikeInterface
 {
   public function like();
