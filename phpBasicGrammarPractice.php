@@ -86,6 +86,7 @@ function processLikeable(LikeInterface $likable)
 
 processLikeable($posts[0]);
 processLikeable($posts[3]);
+processLikeable($posts[3]);
 
 function processPost(BasePost $post) 
 {
