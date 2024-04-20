@@ -2,6 +2,18 @@
 //PremiumPostとPostでlikeメソッドが重複している。
 //BasePostはSponsoredPostにも継承されているのでそこには書けない
 
+//traitを使う　コードの断片を使いまわせる
+//型ではないので同じtraitを使っても同じ型として使用できるわけではない
+trait LikeTrait{
+  private $likes = 0;
+  
+  public function like()
+  {
+    $this->likes++;
+  }
+}
+
+
 //Interfaceは実装を含めてはいけないのでここに書くわけにはいかない
 interface LikeInterface
 {
@@ -22,13 +34,9 @@ abstract class BasePost
 
 class Post extends BasePost implements LikeInterface
 {
-  private $likes = 0;
+  //traitを使用
+  use LikeTrait;
   
-  public function like()
-  {
-    $this->likes++;
-  }
-
   public function show()
   {
     printf('%s (%d)' . PHP_EOL, $this->text, $this->likes);
@@ -54,13 +62,10 @@ class SponsoredPost extends BasePost
 class PremiumPost extends BasePost implements LikeInterface
 {
   private $price;
-  private $likes = 0;
-  
-  public function like()
-  {
-    $this->likes++;
-  }
-  
+
+    //traitを使用
+    use LikeTrait;
+
   public function __construct($text, $price)
   {
     parent::__construct($text);
