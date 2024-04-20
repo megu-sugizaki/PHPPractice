@@ -1,20 +1,16 @@
 <?php
+//読み込むクラスが多くなるといちいち書くのが面倒
+//auto load を使う
+//newをした時にそのクラスが読み込まれていなかったら呼ばれるクラス
+//そのクラス名を下記の無名関数の引数として渡す
+//newされた時にpostの文字列が$classに渡されてautoloadを実行
+spl_autoload_register(function ($class){
+  require($class . '.php');
+});
 
-//post classをPost.phpに移動したのでPost.phpを読み込む
+// require('Post.php');
 
-//ファイルが読み込めなかった時にエラーになって処理がとまる
-//Post classがないとそもそも動作しないのでrequireを使う
-require('Post.php');
-//上記と同じだが、読み込まないだけで処理が止まらない
-//htmlファイル等読み込めなくてもあまり問題がないものに使う
-// include('Post.php');
-
-
-//ファイルがすでに読み込まれていたらスキップしてくれる
-//ファイル構成が複雑になると使う
-// require_once('Post.php');
-// include_once('Post.php');
-
+//ここのPostの部分が$classに代入される。
 $posts[0] = new Post('hello');
 $posts[1] = new Post('hello again');
 
