@@ -1,18 +1,19 @@
 <?php
-//読み込むクラスが多くなるといちいち書くのが面倒
-//auto load を使う
-//newをした時にそのクラスが読み込まれていなかったら呼ばれるクラス
-//そのクラス名を下記の無名関数の引数として渡す
-//newされた時にpostの文字列が$classに渡されてautoloadを実行
-spl_autoload_register(function ($class){
-  require($class . '.php');
-});
 
-// require('Post.php');
+//名前空間をいちいち書くのは面倒 MyPHPAppという名前で呼べるようにする
+use Dotinstall\MyPHPApp as MyPHPApp;
 
-//ここのPostの部分が$classに代入される。
-$posts[0] = new Post('hello');
-$posts[1] = new Post('hello again');
+require('Post.php');
+
+//同じ名前のクラスは作れない
+//名前の衝突を避けるために名前空間を別ファイルのクラスの方に作成する
+class Post{
+  
+}
+
+//同名のクラスがあってもエラーにならないように名前空間を呼び出す
+$posts[0] = new Dotinstall\MyPHPApp\Post('hello');
+$posts[1] = new Dotinstall\MyPHPApp\Post('hello again');
 
 foreach ($posts as $post) {
   $post->show();

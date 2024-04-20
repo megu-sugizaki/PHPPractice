@@ -1,4 +1,6 @@
 <?php
+//名前空間
+namespace Dotinstall\MyPHPApp\Post
 
 class Post
 {
