@@ -1,20 +1,18 @@
 <?php
 
-//名前空間をいちいち書くのは面倒 MyPHPAppという名前で呼べるようにする
-// use Dotinstall\MyPHPApp as MyPHPApp;
-//上と同じ意味
-use Dotinstall\MyPHPApp;
-
 require('Post.php');
 
-//同じ名前のクラスは作れない
-//名前の衝突を避けるために名前空間を別ファイルのクラスの方に作成する
-class Post {}
-
-//同名のクラスがあってもエラーにならないように名前空間を呼び出す
-$posts[0] = new MyPHPApp\Post('hello');
-$posts[1] = new MyPHPApp\Post('hello again');
-
-foreach ($posts as $post) {
-  $post->show();
+//例外が発生しそうな箇所をtryで囲む
+try{
+  $posts[0] = new Post('!');
+  //↑ここでthrowされた場合これ以降の処理は実行されない
+  $posts[1] = new Post('hello again');
+  
+  foreach ($posts as $post) {
+    $post->show();
+  }
+  //インスタンスを引数$eで受け取る
+} catch (Exception $e){
+  //あらかじめgetmexsageメソッドが用意されている
+  echo $e -> getMessage();
 }
